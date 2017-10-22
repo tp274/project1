@@ -6,6 +6,7 @@ abstract class Renderer{
 
 class CsvRenderer extends Renderer{
 
+	//renders data using  html table
 	public function render($data){
           $html = "<html><body><table border = 1";
 	  $html .= "<tr>";

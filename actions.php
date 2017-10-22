@@ -19,11 +19,11 @@ class Actions {
 
 	    //To display CSV file contents
 	    public function display() {
-	      $filename = $_GET['filename'];
+	      $filename = $this->request['filename'];
               $parser = new CsvParser();
               $data = $parser->parse($filename);
 	      $renderer = new CsvRenderer();
 	      $renderer->render($data);
 	}
 }
-?>
+

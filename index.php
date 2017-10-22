@@ -1,7 +1,7 @@
 <?php
 
 //turn on debugging messages
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'true');
 error_reporting(E_ALL);
 
 
@@ -20,7 +20,7 @@ spl_autoload_register(array('Manage', 'autoload'));
 //Include Actions file to navigate to respective page
 $actions = new Actions($_REQUEST);
 //Fetch the action param from the url 
-$action = isset($_GET['action']) ? $_GET[action] : 'form';
+$action = isset($_GET['action']) ? $_GET['action'] : 'form';
 //based on the action call the method
 switch($action){
  case 'form':
@@ -32,4 +32,4 @@ switch($action){
       echo 'Invalid action';
         break;
 }
-?>
+

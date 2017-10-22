@@ -2,7 +2,7 @@
 abstract class Renderer{
 
 	abstract function render($data);
-	}
+}
 
 class CsvRenderer extends Renderer{
 
@@ -24,4 +24,4 @@ class CsvRenderer extends Renderer{
           }
 
  }
-	  ?>
+	

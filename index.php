@@ -18,11 +18,10 @@ class Manage {
 spl_autoload_register(array('Manage', 'autoload'));
 
 //Include Actions file to navigate to respective page
-require __DIR__ . '/Actions.php';
 $actions = new Actions($_REQUEST);
 //Fetch the action param from the url 
 $action = isset($_GET['action']) ? $_GET[action] : 'form';
-
+//based on the action call the method
 switch($action){
  case 'form':
  case 'submit':

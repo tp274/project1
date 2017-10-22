@@ -2,19 +2,15 @@
 //Class to Handle File upload
 class UploadHandler{
 	
-	// To upload file in target directory and navigate on diplay action on success
-	public static function handleUpload(){
-	 if(isset($_POST['submit']) && $_POST['submit'] == "Upload Image"){
-         $dir="/afs/cad/u/t/p/tp274/public_html/project1/uploads/";
- 	 $target_file = $dir.basename($_FILES['fileToUpload']['name']);
-	 if(self:: validateExtensionAndUpload($target_file)){
-	   header('Location: https://web.njit.edu/~tp274/project1/index.php?action=display&&filename=' .$target_file);   
-	  }
-	  else {
-	   echo 'Error while uploading' .$target_file;
-	   }
-	  }
+	// To upload file in target directory 
+	public static function handleUpload($fileInfo){
+         $dir=__DIR__."/uploads/";
+ 	 $target_file = $dir.basename($fileInfo['fileToUpload']['name']);
+	 if( self:: validateExtensionAndUpload($target_file)){
+	 return $target_file;
+	 }
 	}
+
 	//To validate the file extension and file upload verification
 	public static function validateExtensionAndUpload($target_file){
 	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);

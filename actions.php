@@ -8,13 +8,21 @@ class Actions {
 
 	    //To display the form contents
 	    public function form(){
- 		include('./form.php');
-
+	 	require('./form.php');
 	    }
 	   
 	   //On form submit need to upload file
 	    public function submit() { 
-	      UploadHandler::handleUpload();
+	      if(isset($this->request['submit'])){
+	      $target_file =UploadHandler::handleUpload($_FILES);
+	      if($target_file){
+	       header('Location:index.php?action=display&&filename='
+	       .$target_file);
+	        }else
+		{
+		  echo 'Error while uploading.';
+		}
+	     }
 	    }
 
 	    //To display CSV file contents
@@ -23,7 +31,7 @@ class Actions {
               $parser = new CsvParser();
               $data = $parser->parse($filename);
 	      $renderer = new CsvRenderer();
-	      $renderer->render($data);
+	      echo  $renderer->render($data);
 	}
 }
 

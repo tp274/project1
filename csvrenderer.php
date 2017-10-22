@@ -8,7 +8,7 @@ class CsvRenderer extends Renderer{
 
 	//renders data using  html table
 	public function render($data){
-          $html = "<html><body><table border = 1";
+          $html = "<html><body><table border = 1>";
 	  $html .= "<tr>";
 	  foreach($data[0] as $header){
 	  $html .="<th>" .$header. "</th>";
@@ -19,8 +19,10 @@ class CsvRenderer extends Renderer{
 	  foreach ($data[$i] as $row) {
 	  $html .= "<td>" .$row. "</td>";
 	  }
+	  $html .="</tr>";
 	  }
-	  echo $html; 
+	  $html .="</table>";
+	  return  $html; 
           }
 
  }
